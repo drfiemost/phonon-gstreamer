@@ -67,7 +67,8 @@ private:
 };
 
 X11Renderer::X11Renderer(VideoWidget *videoWidget)
-        : AbstractRenderer(videoWidget)
+        : AbstractRenderer(videoWidget),
+          m_overlaySet(false)
 {
     m_renderWidget = new OverlayWidget(videoWidget, this);
     debug() << "Creating X11 overlay renderer";
