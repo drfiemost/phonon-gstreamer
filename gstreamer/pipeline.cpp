@@ -834,8 +834,8 @@ static void cb_feedAppSrc(GstAppSrc *appSrc, guint buffsize, gpointer data)
 
     GstMapInfo info;
     gst_buffer_map(buf, &info, GST_MAP_WRITE);
-    #warning return value not used!!! WHOOPWHOOPWHOOP
-    reader->read(reader->currentPos(), info.size, (char*)info.data);
+#warning return value not used!!! WHOOPWHOOPWHOOP
+    GstFlowReturn ret = reader->read(reader->currentPos(), info.size, (char*)info.data);
     gst_buffer_unmap(buf, &info);
     gst_app_src_push_buffer(appSrc, buf);
     if (info.size > 0 && reader->atEnd()) {
