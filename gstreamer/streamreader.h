@@ -38,7 +38,7 @@ namespace Gstreamer
 
 class StreamReader : public QObject, Phonon::StreamInterface
 {
-    Q_INTERFACES(Phonon::StreamInterface);
+    Q_INTERFACES(Phonon::StreamInterface)
     Q_OBJECT
 public:
     StreamReader(const Phonon::MediaSource &source, Pipeline *parent);

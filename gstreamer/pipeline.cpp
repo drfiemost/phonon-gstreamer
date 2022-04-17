@@ -947,6 +947,6 @@ QByteArray Pipeline::captureDeviceURI(const MediaSource &source) const
 }
 
 }
-};
+}
 
 #include "moc_pipeline.cpp"
