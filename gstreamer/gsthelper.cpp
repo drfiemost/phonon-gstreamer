@@ -40,6 +40,7 @@ namespace Gstreamer
 QList<QByteArray> GstHelper::extractProperties(GstElement *elem, const QByteArray &value)
 {
     Q_ASSERT(elem);
+    Q_UNUSED(elem);
     Q_UNUSED(value);
 
     #warning Implement this for GStreamer 1.3.1

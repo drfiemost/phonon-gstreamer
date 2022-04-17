@@ -266,6 +266,7 @@ void Pipeline::writeToDot(MediaObject *media, const QString &type)
         debug() << type;
     }
     GST_DEBUG_BIN_TO_DOT_FILE_WITH_TS(bin, GST_DEBUG_GRAPH_SHOW_ALL, QString("phonon-%0").arg(type).toUtf8().constData());
+    Q_UNUSED(bin);
 }
 
 GstState Pipeline::state() const

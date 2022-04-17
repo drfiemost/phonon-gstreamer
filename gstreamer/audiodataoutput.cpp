@@ -203,6 +203,7 @@ void AudioDataOutput::processBuffer(GstElement*, GstBuffer* buffer, GstPad* pad,
             that->m_pendingData.append(gstBufferData[i]);
         }
         Q_ASSERT(int(prevPendingSize + gstBufferSize) == that->m_pendingData.size());
+        Q_UNUSED(prevPendingSize);
         return;
     }
 
