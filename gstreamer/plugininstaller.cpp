@@ -167,7 +167,7 @@ void PluginInstaller::run()
     if (activeWindow) {
         gst_install_plugins_context_set_xid(ctx, static_cast<int>(activeWindow->winId()));
     }
-    gchar *details[m_pluginList.size()+m_descList.size()+1];
+    std::vector<gchar*> details(m_pluginList.size()+m_descList.size()+1);
     int i = 0;
     foreach (const QString &plugin, m_pluginList.keys()) {
         details[i] = strdup(buildInstallationString(plugin.toUtf8().constData(), m_pluginList[plugin]).toUtf8().constData());
@@ -177,10 +177,10 @@ void PluginInstaller::run()
         details[i] = strdup(desc.toUtf8().constData());
         i++;
     }
-    details[i] = 0;
+    details[i] = nullptr;
 
     GstInstallPluginsReturn status;
-    status = gst_install_plugins_async(details, ctx, pluginInstallationDone, new QPointer<PluginInstaller>(this));
+    status = gst_install_plugins_async(details.data(), ctx, pluginInstallationDone, new QPointer<PluginInstaller>(this));
     gst_install_plugins_context_free(ctx);
     if (status != GST_INSTALL_PLUGINS_STARTED_OK) {
         if (status == GST_INSTALL_PLUGINS_HELPER_MISSING)
