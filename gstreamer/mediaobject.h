@@ -61,11 +61,11 @@ class MediaObject : public QObject, public MediaObjectInterface
     friend class AudioDataOutput;
     Q_OBJECT
     Q_INTERFACES(Phonon::MediaObjectInterface
-#ifndef QT_NO_PHONON_MEDIACONTROLLER
-                 Phonon::AddonInterface
-#endif
                  Phonon::Gstreamer::MediaNode
     )
+#ifndef QT_NO_PHONON_MEDIACONTROLLER
+    Q_INTERFACES(Phonon::AddonInterface)
+#endif
 
 public:
     MediaObject(Backend *backend, QObject *parent);
