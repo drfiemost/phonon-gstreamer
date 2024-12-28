@@ -72,7 +72,7 @@ Backend::Backend(QObject *parent, const QVariantList &)
     static bool first = true;
     if (first) {
         first = false;
-        g_set_application_name(qApp->applicationName().toUtf8());
+        g_set_application_name(qApp->applicationName().toUtf8().constData());
     }
 
     QByteArray appFilePath = qApp->applicationFilePath().toUtf8();

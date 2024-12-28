@@ -524,7 +524,7 @@ void VideoWidget::keyPressEvent(QKeyEvent *event)
         if (navigation) {
             // TODO key code via xlib?
             gst_navigation_send_key_event(navigation, "key-pressed",
-                                          event->text().toLatin1());
+                                          event->text().toLatin1().constData());
         }
     }
     QWidget::keyPressEvent(event);
@@ -538,7 +538,7 @@ void VideoWidget::keyReleaseEvent(QKeyEvent *event)
         if (navigation) {
             // TODO key code via xlib?
             gst_navigation_send_key_event(navigation, "key-released",
-                                          event->text().toLatin1());
+                                          event->text().toLatin1().constData());
         }
     }
     QWidget::keyReleaseEvent(event);
