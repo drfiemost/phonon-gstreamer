@@ -170,9 +170,9 @@ static QImage convertFromYUV(const QByteArray &array, int w, int h)
             const int G = int(1.164 * (sy - 16) - 0.813 * (sv - 128) - 0.391 * (su - 128));
             const int B = int(1.164 * (sy - 16)                      + 2.018 * (su - 128));
 
-            *sp = qRgb(qBound(0, R, 255),
-                       qBound(0, G, 255),
-                       qBound(0, B, 255));
+            *sp = qRgb(std::clamp(R, 0, 255),
+                       std::clamp(G, 0, 255),
+                       std::clamp(B, 0, 255));
 
             ++yp;
             ++sp;
